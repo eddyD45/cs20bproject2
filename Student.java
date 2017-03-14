@@ -32,6 +32,11 @@ public class Student implements Comparable<Student> {
 	public int compareTo(Student s) {
 		return Integer.compare(this.id, s.id);
 	}
+	//overriding toString method to return the values of the Student
+	@Override
+	public String toString() {
+		return name + "," + id + "," + school;
+	}
 	
 	
 }

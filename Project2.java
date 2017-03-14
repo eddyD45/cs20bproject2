@@ -26,12 +26,25 @@ public class Project2 {
 	static Student[] readStudentsFromFile(String filename, int num) {
 		try (Scanner in = new Scanner(new File(filename))) {
 			Student[] students = new Student[num];
+			int i = 0;
 			
 			// YOUR CODE HERE
 			// Hints:
 			// To read a line from the file you can call 
 			//		String line = in.nextLine();
 			// The split method of the String class might come in handy to get the fields
+			do {
+				String line = in.nextLine();
+				String [] info = line.split(",");
+				String tempName = info[0];
+				int tempId = Integer.parseInt(info[1]);
+				String tempSchool = info[2];
+				Student tempStudent = new Student(tempName, tempId, tempSchool);
+				students[i] = tempStudent;
+				i++;
+			} while (filename.hasNextLine());
+			
+			
 			
 			return students;
 		} catch (FileNotFoundException e) {
@@ -54,9 +67,14 @@ public class Project2 {
 			// To write a line to the file you can call 
 			//		   out.write("Hello World!" + "\n");
 			for (int i = 0; i < students.length; i++) {
-//				Student temp = new Student(students[i]);
-				out.write(students[i].name + students[i].id);
+				String tempToString = students[i].toString();
+				String [] tempInfo = tempToString.split(",");
+				String tempName = tempInfo[0];
+				String tempId = tempInfo[1];
+				String tempSchool = tempInfo[2];
+				out.writeln(tempName + "," + tempId + "," + tempSchool);
 			}
+			out.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -79,6 +97,13 @@ public class Project2 {
 		Student[] common = new Student[numCommon];
 
 		// YOUR CODE HERE
+		if (group1.length >= group2.length) {
+			for (int i = 0; i < group1.length; i++;) {
+				for(int j = 0; j < group2.length; j++;) {
+					
+				}
+			}
+		}
 
 		return common;
 	}
